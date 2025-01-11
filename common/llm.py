@@ -12,7 +12,9 @@ def get_llm():
         model_kwargs={
             "max_length": 200  # Set your intended max_length here
         },
-        temperature=0.5
+        temperature=0.5,
+        verbose=True,
+        timeout=60
     )
 
     return llm
