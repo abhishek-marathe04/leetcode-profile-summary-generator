@@ -17,7 +17,7 @@ def fetch_leetcode_profile_info_tool(username: str):
         matchedUser.problemsSolvedBeatsStats contains percentages of solved problems by that user difficuly wise and 
         matchedUser.submitStatsGlobal conatins number of questions user attempted across difficulties
 
-        considering all this information here is json summary of leetcode profile {information} about a person, now create :
+        considering all this information here is json summary of leetcode profile {information} about a person in a markdown format, now create :
         1. a short summary
         2. what is their skill in solving easy, medium and hard problems and what is their success rate
         3. rate their programming level from 1 to 10 and describe what they should do to improve
@@ -44,7 +44,7 @@ def fetch_leetcode_language_info_tool(username: str):
         You will be give leetcode language statistics information in json format about a person
         Remember, in json summary given to you, there will be programming langague name along with problem solved in that programming language
 
-        considering all this information here is json summary of leetcode profile {information} about a person, now create :
+        considering all this information here is json summary of leetcode profile {information} about a person in a markdown format, now create :
         1. a short summary
         2. which all langauges they have solved leetcode problems in
         3. which is their favourite langague

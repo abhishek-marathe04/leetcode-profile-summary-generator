@@ -35,12 +35,7 @@ if st.button("Generate Summary"):
                 st.success("Summary Generated!")
                 st.markdown("### **Summary:**")
                 st.markdown(summary)
-                # Use JavaScript to scroll to the summary section
-                html("""
-                <script>
-                    window.scrollTo(0, document.body.scrollHeight);
-                </script>
-                """, height=0)
+                
             except Exception as e:
                 st.error(f"Error: {str(e)}")
     else:

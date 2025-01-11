@@ -79,7 +79,7 @@ if __name__ == '__main__':
     load_dotenv()
 
     profile_prompt = '"Get Profile Details": "Get the profile details of username user8162l"'
-    langague_prompt = '"Get Profile Details": "Get the profile details of username user8162l"'
-    res = leetcode_agent_using_zero_shot_react(query=profile_prompt)
+    langague_prompt = '""Get Programing Language Stats": "Get the Programing Language Stats of username user8162l""'
+    res = leetcode_agent_using_zero_shot_react(query=langague_prompt)
 
     print(res)
