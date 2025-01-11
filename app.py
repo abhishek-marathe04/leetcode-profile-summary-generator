@@ -20,7 +20,7 @@ st.write("Here are some sample prompts you can use. Copy and paste them manually
 
 # Display each sample prompt with a label
 for prompt_name, prompt_text in sample_prompts.items():
-    st.subheader(prompt_name)
+    st.markdown(f"#### {prompt_name}")
     st.code(prompt_text, language="plaintext")  # Nicely formatted, easy to copy
 
 # Input for LinkedIn profile content
