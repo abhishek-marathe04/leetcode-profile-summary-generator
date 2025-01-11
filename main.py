@@ -72,7 +72,7 @@ def leetcode_agent_using_zero_shot_react(query: str):
     )
 
     res = agent.run(query)
-
+    print(res)
     return res
 
 if __name__ == '__main__':
@@ -80,6 +80,6 @@ if __name__ == '__main__':
 
     profile_prompt = '"Get Profile Details": "Get the profile details of username user8162l"'
     langague_prompt = '""Get Programing Language Stats": "Get the Programing Language Stats of username user8162l""'
-    res = leetcode_agent_using_zero_shot_react(query=langague_prompt)
+    res = leetcode_agent_using_zero_shot_react(query=profile_prompt)
 
     print(res)
