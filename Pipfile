@@ -10,8 +10,11 @@ langchain-community = "*"
 langchainhub = "*"
 python-dotenv = "*"
 streamlit = "*"
+langchain-huggingface = "*"
+huggingface-hub = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3.11"

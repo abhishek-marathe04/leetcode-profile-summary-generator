@@ -2,15 +2,17 @@ from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
+
 from langchain_core.tools import Tool
 from langchain.agents import (
     initialize_agent,
 )
 
+from common.llm import get_llm
 from tools.leetcode import fetch_leetcode_language_info_tool, fetch_leetcode_profile_info_tool
 
 def fetch_leetcode_username(prompt: str):
-
+    print(f'Inside Fetch Leetcode Username  : {prompt}')
     fetch_leetcode_username_prompt = """
         You are a leetcode username extractor. You will receive Query which will have leetcode username mentioned, You need to return only leetcode username. The username is usually a single word or alphanumeric string.
 
@@ -20,7 +22,7 @@ def fetch_leetcode_username(prompt: str):
         Username:
     """
 
-    llm = ChatOpenAI(temperature=0, model='ruslandev/llama-3-8b-gpt-4o-ru1.0-gguf', base_url="http://localhost:1234/v1", api_key="lm-studio")
+    llm = get_llm()
     fetch_leetcode_username_prompt_template = PromptTemplate(input_variables=['query'], template=fetch_leetcode_username_prompt)
 
     chain = fetch_leetcode_username_prompt_template | llm | StrOutputParser()
@@ -32,13 +34,14 @@ def fetch_leetcode_username(prompt: str):
 
 
 def leetcode_agent_using_zero_shot_react(query: str):
-
+    load_dotenv()
+    print(f'Request Received  : {query}')
     leetcode_username = fetch_leetcode_username(prompt=query)
 
-    print(f'leetcode_username : {leetcode_username}')
+    print(f'leetcode_username for query : {leetcode_username}')
 
-    llm = ChatOpenAI(temperature=0, model='ruslandev/llama-3-8b-gpt-4o-ru1.0-gguf', base_url="http://localhost:1234/v1", api_key="lm-studio")
-
+    llm = get_llm()
+    
     tools_for_agent = [
         Tool(
             name="GetLeetcodeProfileDetails",

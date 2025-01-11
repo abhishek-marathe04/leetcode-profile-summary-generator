@@ -2,6 +2,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 
+from common.llm import get_llm
 from third_parties.leetcode import fetch_leetcode_profile_details, fetch_leetcode_language_stats
 
 
@@ -23,7 +24,7 @@ def fetch_leetcode_profile_info_tool(username: str):
 
     """
     
-    llm = ChatOpenAI(temperature=0, model='ruslandev/llama-3-8b-gpt-4o-ru1.0-gguf', base_url="http://localhost:1234/v1", api_key="lm-studio")
+    llm = get_llm()
     leetcode_profile_api_response = fetch_leetcode_profile_details(username=username)
     summary_prompt_template = PromptTemplate(template=summary_template, input_variables=['information'])
 
@@ -49,7 +50,7 @@ def fetch_leetcode_language_info_tool(username: str):
 
     """
     
-    llm = ChatOpenAI(temperature=0, model='ruslandev/llama-3-8b-gpt-4o-ru1.0-gguf', base_url="http://localhost:1234/v1", api_key="lm-studio")
+    llm = get_llm()
     leetcode_langauge_api_response = fetch_leetcode_language_stats(username=username)
     summary_prompt_template = PromptTemplate(template=langauge_stats_template, input_variables=['information'])
 
