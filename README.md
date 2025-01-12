@@ -1,6 +1,7 @@
 # RAG Application
 
 This project demonstrates the implementation of a **Retrieval-Augmented Generation (RAG)** application using **LangChain** and **Python**. The app is designed to fetch either user leetcode profile details or user programming language statistics on leetcode based on user queries. It supports standalone execution and a Streamlit-based frontend for an interactive user experience.
+This application could work with local llm or hugging face open source model. Check common/llm.py file for more info.
 
 ---
 
@@ -28,6 +29,7 @@ This project demonstrates the implementation of a **Retrieval-Augmented Generati
 - Python 3.8+
 - Virtual Environment (recommended)
 - Streamlit
+- Hugging Face API Token
 
 ### Setup
 
@@ -52,7 +54,7 @@ This project demonstrates the implementation of a **Retrieval-Augmented Generati
    - Ensure any necessary API keys (if required) are added to a `.env` file in the root directory.
    - Example `.env` file:
      ```env
-     API_KEY=<your-api-key>
+     HUGGINGFACEHUB_API_TOKEN=<your-api-key>
      ```
 
 ---
@@ -78,13 +80,21 @@ streamlit run app.py
 ## Project Structure
 
 ```
-├── main.py                # Standalone script for the application
-├── app.py                 # Streamlit-based interface
-├── tools.py               # Contains tool functions for profile details and stats
-├── prompts.py             # Contains prompts for the LLM
-├── requirements.txt       # Python dependencies
-├── README.md              # Project documentation
-└── .env                   # Environment variables (optional)
+Leetcode_Profile_Generator/
+├── common/                   # Common utilities shared across the app
+│   ├── logger.py             # Logging utilities
+│   └── llm.py                # LLM-related logic
+├── third_parties/            # Code or integrations from third-party libraries
+│   ├── __init__.py           # Module initializer
+│   └── leetcode.py           # LeetCode API integration
+├── tools/                    # Tools and scripts specific to app functionality
+│   └── leetcode.py           # LeetCode-related Tool
+├── .env                      # Environment variables (excluded from version control)
+├── app.py                    # Main application file for Streamlit
+├── config.toml               # Configuration file for the app
+├── main.py                   # Entry point of the app
+├── Pipfile                   # Pipenv dependency file
+
 ```
 
 ---
@@ -111,21 +121,35 @@ streamlit run app.py
 
 - **Profile Details**:
   ```
-  Get the profile details for user123.
+  "Get Profile Details": "Get the profile details of username letsmailabhishekmarathe"
   ```
   **Output**:
-  ```
-  Profile details for user123: [Name: John Doe, Role: Software Developer]
-  ```
+   ### Summary
+   The user has attempted a total of 237 questions on LeetCode, with a success rate of 96.63% across all difficulties. They have solved 92.95% of Easy problems, 87.53% of Medium problems, and 40.58% of Hard problems.
 
+   ### Skills and Success Rates
+   The user is quite skilled at solving Easy problems, with a success rate of 92.95%. They are also doing well in Medium problems, with a success rate of 87.53%. However, their success rate in Hard problems is relatively low, at 40.58%.
+
+   ### Programming Level and Recommendations
+   Based on the data provided, the user's programming level can be rated as a 6 out of 10. They are doing well in Easy and Medium problems, but their success rate in Hard problems is quite low. To improve, they should focus on practicing more Hard problems and seeking out resources to help them better understand the underlying concepts and algorithms. Additionally, they may benefit from reviewing their solutions to Easy and Medium problems to identify any potential areas for improvement or optimization.
+   
 - **Programming Stats**:
   ```
-  Fetch programming stats for user456.
+  "Get Programing Language Stats": "Get the Programing Language Stats of username letsmailabhishekmarathe"
   ```
   **Output**:
-  ```
-  Stats for user456: [Solved: 75 problems, Rank: Top 5%]
-  ```
+
+   ### Summary
+   This user has solved a total of 208 problems on LeetCode. They have used three different programming languages: Python, JavaScript, and TypeScript. Python and TypeScript have each been used to solve one problem, while JavaScript is their most frequently used language, with a total of 194 problems solved.
+
+   ### Programming Languages Used
+   - Python: 1 problem
+   - JavaScript: 194 problems
+   - TypeScript: 53 problems
+
+   ### Favourite Programming Language
+   Based on the data provided, the user's favourite programming language on LeetCode is JavaScript, as they have used it to solve the majority of their problems (approximately 93.7% of their total problem solutions).
+
 
 ---
 

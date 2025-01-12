@@ -9,8 +9,8 @@ st.subheader('Generate a summary of leetcode profile')
 
 # Define sample prompts
 sample_prompts = {
-    'Fetch Profile Details':'"Get Profile Details": "Get the profile details of username user8162l"',
-    'Fetch Programing Langauge Stats':'"Get Programing Language Stats": "Get the Programing Language Stats of username user8162l"'
+    'Fetch Profile Details':'"Get Profile Details": "Get the profile details of username letsmailabhishekmarathe"',
+    'Fetch Programing Langauge Stats':'"Get Programing Language Stats": "Get the Programing Language Stats of username letsmailabhishekmarathe"'
 }
 
 # Streamlit UI
