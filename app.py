@@ -26,14 +26,22 @@ for prompt_name, prompt_text in sample_prompts.items():
 # Input for LinkedIn profile content
 users_query = st.text_area("Copy any Sample Prompt or Use your own query here:", height=100)
 
+# Using Stateful button
+if 'clicked' not in st.session_state:
+    st.session_state.clicked = False
+
+def click_button():
+    st.session_state.clicked = True
+
+st.button('Generate Summary', on_click=click_button)
+
 # Generate summary on button click
-if st.button("Generate Summary"):
+if st.session_state.clicked:
     if users_query.strip():
         with st.spinner("Generating summary..."):
             try:
                 summary = leetcode_agent_using_zero_shot_react(query=users_query)
                 st.success("Summary Generated!")
-                st.markdown("### **Summary:**")
                 st.markdown(summary)
                 
             except Exception as e:

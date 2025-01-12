@@ -72,14 +72,19 @@ def leetcode_agent_using_zero_shot_react(query: str):
     )
 
     res = agent.run(query)
-    print(res)
-    return res
+
+    # Normalize the response
+    lines = res.split("\n")
+    cleaned_lines = [line.strip() for line in lines]  # Only strip leading/trailing spaces
+    normalized_output = "\n".join(cleaned_lines)
+    print(normalized_output)
+    return normalized_output
 
 if __name__ == '__main__':
     load_dotenv()
 
     profile_prompt = '"Get Profile Details": "Get the profile details of username user8162l"'
     langague_prompt = '""Get Programing Language Stats": "Get the Programing Language Stats of username user8162l""'
-    res = leetcode_agent_using_zero_shot_react(query=profile_prompt)
+    res = leetcode_agent_using_zero_shot_react(query=langague_prompt)
 
     print(res)

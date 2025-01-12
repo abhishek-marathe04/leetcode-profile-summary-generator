@@ -1,4 +1,5 @@
 from langchain_huggingface import HuggingFaceEndpoint
+from langchain_openai import ChatOpenAI
 from openai import OpenAI
 
 def get_llm():
